@@ -9,13 +9,15 @@ public class Atac<T> implements Deque<T>{
     private DLLNode<T> _tail;
     private int size;
     
+    //empty 
     public Atac(){
 	_head = _tail = null; 
 	size = 0;
     }
 
+    //adds a node to the beginning of the attachment of nodes
     public void addFirst( T e ){
-	DLLNode<T> toAdd = new DLLNode( e, null, null );
+	DLLNode<T> toAdd = new DLLNode( e, null, null ); //node to add
 	if ( _head==null )
 	    _tail = toAdd;
 	else {
@@ -25,9 +27,10 @@ public class Atac<T> implements Deque<T>{
 	_head = toAdd;
 	size += 1;
     }
-
+    
+    //adds a node to the end of the attachment of nodes
     public void addLast( T e){
-	DLLNode<T> toAdd = new DLLNode( e, null, null );
+	DLLNode<T> toAdd = new DLLNode( e, null, null ); //node to add
 	if ( _head==null )
 	    _head = toAdd;
 	else {
@@ -38,18 +41,19 @@ public class Atac<T> implements Deque<T>{
 	size += 1;
     }
 
+    //returns what's in the first node
     public T peekFirst(){
 	return _head.getCargo();
     }
 
+    //returns what's in the last node
     public T peekLast(){
 	return _tail.getCargo();
     }
 
     public String toString(){
 	String ret = "";
-	DLLNode<T> temp = new DLLNode<T>(null, null, null); 
-	temp = _head; 
+	DLLNode<T> temp = _head;
 	while (temp != null){
 	    ret += temp.getCargo() + " ";
 	    temp = temp.getNext();
@@ -57,6 +61,7 @@ public class Atac<T> implements Deque<T>{
 	return ret;
     }
 
+    //reassigns the pointers so nothing points to the first node and the garbage collector eats it
     public T removeFirst(){
 	DLLNode<T> first = _head; 
 	_head = _head.getNext();
@@ -64,6 +69,7 @@ public class Atac<T> implements Deque<T>{
 	return first.getCargo(); 
     }
 
+    //reassigns the pointers so nothing points to the last node and the garbage collector eats it
     public T removeLast(){
 	DLLNode<T> last = _tail; 
 	_tail = _tail.getPrev(); 
