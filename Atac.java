@@ -9,13 +9,13 @@ public class Atac<T> implements Deque<T>{
     private DLLNode<T> _tail;
     private int size;
     
-    //empty 
+    //creates empty deque
     public Atac(){
 	_head = _tail = null; 
 	size = 0;
     }
 
-    //adds a node to the beginning of the attachment of nodes
+    //adds a node to the beginning of the deque
     public void addFirst( T e ){
 	DLLNode<T> toAdd = new DLLNode( e, null, null ); //node to add
 	if ( _head==null )
@@ -28,7 +28,7 @@ public class Atac<T> implements Deque<T>{
 	size += 1;
     }
     
-    //adds a node to the end of the attachment of nodes
+    //adds a node to the end of the deque
     public void addLast( T e){
 	DLLNode<T> toAdd = new DLLNode( e, null, null ); //node to add
 	if ( _head==null )
@@ -66,6 +66,7 @@ public class Atac<T> implements Deque<T>{
 	DLLNode<T> first = _head; 
 	_head = _head.getNext();
 	_head.setPrev(null); 
+	size--; 
 	return first.getCargo(); 
     }
 
@@ -74,8 +75,14 @@ public class Atac<T> implements Deque<T>{
 	DLLNode<T> last = _tail; 
 	_tail = _tail.getPrev(); 
 	_tail.setNext(null); 
+	size--; 
 	return last.getCargo();
     }
+
+    //returns size of deque 
+    public int size(){
+	return size;
+    } 
 
     public static void main(String[] args){
 	Atac<String> bob = new Atac<String>();
