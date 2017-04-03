@@ -6,9 +6,9 @@
 
 public interface Deque<T>{
     public abstract void addFirst( T e);
-    //public abstract void addLast( T e);
-    //public abstract T peekFirst();
-    //public abstract T peekLast();
+    public abstract void addLast( T e);
+    public abstract T peekFirst();
+    public abstract T peekLast();
     //public abstract T removeFirst();
     //public abstract T removeLast();
 }
