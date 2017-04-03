@@ -4,23 +4,23 @@
 //Lab02 -- All Hands on Deque! (Not Schenectady; rather, synecdoche.)
 //2017-03-31
 
-public class Atac{
-    DLLNode _head;
-    DLLNode _tail;
-    int size;
+public class Atac<T> implements Deque<T>{
+    private DLLNode _head;
+    private DLLNode _tail;
+    private int size;
     
-    public Atac{
+    public Atac(){
 	_head = _tail = null;
     }
     public void addFirst( T e ){
 	DLLNode<T> toAdd = new DLLNode( e, null, null );
 	if ( _head.getCargo()==null )
-	    _end = add;
+	    _tail = toAdd;
     else {
-	    toAdd.setNext( _front );
-	    _front.setPrev( toAdd );
+	    toAdd.setNext( _head );
+	    _head.setPrev( toAdd );
 	}
-	_front = toAdd;
+	_head = toAdd;
 	size+=1;
     }
 }

@@ -5,7 +5,7 @@
 //2017-03-31
 
 public interface Deque<T>{
-    //public abstract void addFirst( T e);
+    public abstract void addFirst( T e);
     //public abstract void addLast( T e);
     //public abstract T peekFirst();
     //public abstract T peekLast();
