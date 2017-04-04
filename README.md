@@ -1,4 +1,6 @@
 # CATScan
+Tina Chen, Caleb Smith-Salzberg, Angel Ng
+Period 5
 
 We selected the following methods to implement in our Atac class:
 1. `addFirst(T e)`   : Adds a node e to the front 
