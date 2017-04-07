@@ -63,26 +63,45 @@ public class Atac<T> implements Deque<T>{
 
     //reassigns the pointers so nothing points to the first node and the garbage collector eats it
     public T removeFirst(){
-	DLLNode<T> first = _head; 
+	if (size==1){
+	    T first = _tail.getCargo();
+	    _head=_tail=null;
+	    return first;
+	}
+       	if (isEmpty())
+	    throw new NullPointerException("Cannot remove from an empty Deque");
+	T first = _head.getCargo(); 
 	_head = _head.getNext();
 	_head.setPrev(null); 
 	size--; 
-	return first.getCargo(); 
+	return first; 
     }
 
     //reassigns the pointers so nothing points to the last node and the garbage collector eats it
     public T removeLast(){
-	DLLNode<T> last = _tail; 
-	_tail = _tail.getPrev(); 
-	_tail.setNext(null); 
-	size--; 
-	return last.getCargo();
+	if (size==1){
+	    T last = _tail.getCargo();
+	    _head=_tail=null;
+	    return last;
+	}
+	else if (isEmpty())
+	    throw new NullPointerException("Cannot remove from an empty Deque");
+	else{
+	    T last = _tail.getCargo(); 
+	    _tail = _tail.getPrev(); 
+	    _tail.setNext(null); 
+	    size--; 
+	    return last;
+	}
     }
 
     //returns size of deque 
     public int size(){
 	return size;
     } 
+    public boolean isEmpty(){
+	return size==0;
+    }
 
     public static void main(String[] args){
 	Atac<String> bob = new Atac<String>();
